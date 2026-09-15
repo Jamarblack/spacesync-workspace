@@ -15,7 +15,7 @@ export default function Footer() {
                  <img src={logo} className="block w-10 h-10 object-contain" />
             
               </div>
-              <span className="text-slate-900 dark:text-white font-semibold text-xl tracking-tight transition-colors duration-700">SpaceSync</span>
+              <span className="text-slate-900 dark:text-white font-extrabold text-xl tracking-tight transition-colors duration-700">Space<span className='font-semibold text-md '>Sync</span></span>
             </div>
             <p className="text-slate-600 dark:text-slate-400 leading-relaxed max-w-sm transition-colors duration-700">
               Flexible office spaces designed for focus, productivity, and growth in Abuja. Innovate, Create, Thrive.
