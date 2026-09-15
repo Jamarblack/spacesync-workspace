@@ -1,6 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import { ChevronDown } from "lucide-react";
 import Button from "../ui/Button"; // We will use your existing Button for now
 
 const slides = [
