@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-brand-navy: #020617;
+  --color-brand-navylight: #0f172a;
+  --color-brand-gold: #f59e0b;
+  --color-brand-goldlight: #fcd34d;
+  --font-sans: "Inter", sans-serif;
+}
+
+body {
+  background-color: #f8fafc;
+  color: #0f172a;
+  overflow-x: hidden;
+}
+
+html.dark body {
+  background-color: var(--color-brand-navy);
+  color: #f8fafc;
+}
