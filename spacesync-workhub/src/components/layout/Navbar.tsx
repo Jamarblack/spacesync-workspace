@@ -1,12 +1,18 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon, ArrowRightLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isDark, setIsDark] = useState(true);
+
+  // Router hooks to determine current page
+  const location = useLocation();
+  const navigate = useNavigate();
+  const isRealty = location.pathname === '/realty';
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -51,6 +57,13 @@ export default function Navbar() {
     }
   };
 
+  // Switch between Workhub and Realty
+  const switchService = () => {
+    setIsOpen(false);
+    navigate(isRealty ? '/workhub' : '/realty');
+    window.scrollTo(0, 0);
+  };
+
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-300 pointer-events-auto ${
@@ -61,40 +74,85 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         
-        {/* Brand */}
+       {/* Brand */}
         <button 
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
-          className="flex items-center gap-2 cursor-pointer focus:outline-none"
+          onClick={() => navigate('/')} 
+          className="flex items-center gap-2.5 cursor-pointer focus:outline-none"
         >
-          <span className="flex  items-center justify-center rounded bg-transperent text-brand-navy font-bold text-lg">
-            <img src={logo} className="block w-15 h-15 object-contain" />
-            
+          <span className="flex items-center justify-center rounded bg-transparent">
+            {/* Note: w-15 isn't default Tailwind, changed to w-12 (3rem) for reliable sizing */}
+            <img src={logo} className="block w-12 h-12 object-contain" alt="SpaceSync Logo" />
           </span>
-          <span className="font-extrabold text-xl tracking-tight text-slate-900 dark:text-white">
-            Space<span className=" text-md font-semibold">Sync</span>
-          </span>
+          <div className="flex flex-col items-start justify-center mt-1">
+            <span className="font-extrabold text-xl tracking-tight text-slate-900 dark:text-white leading-none">
+              Space<span className="text-lg font-semibold">Sync</span>
+            </span>
+            {isRealty && (
+              <span className="font-semibold text-brand-gold text-[11px] tracking-[0.2em] uppercase mt-1 leading-none">
+                Realty
+              </span>
+            )}
+          </div>
         </button>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8">
+          {/* Explicit Home Button */}
           <button 
-            onClick={() => scrollTo('philosophy')} 
+            onClick={() => { navigate('/'); window.scrollTo(0, 0); }} 
             className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-gold transition-colors cursor-pointer"
           >
-            About
+            Home
           </button>
-          <button 
-            onClick={() => scrollTo('amenities')} 
-            className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-gold transition-colors cursor-pointer"
+
+          {!isRealty ? (
+            // Workhub Links
+            <>
+              <button 
+                onClick={() => scrollTo('philosophy')} 
+                className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-gold transition-colors cursor-pointer"
+              >
+                About
+              </button>
+              <button 
+                onClick={() => scrollTo('amenities')} 
+                className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-gold transition-colors cursor-pointer"
+              >
+                Amenities
+              </button>
+              <button 
+                onClick={() => scrollTo('pricing')} 
+                className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-gold transition-colors cursor-pointer"
+              >
+                Rates
+              </button>
+            </>
+          ) : (
+            // Realty Links
+            <>
+              <button 
+                onClick={() => scrollTo('listings')} 
+                className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-gold transition-colors cursor-pointer"
+              >
+                Exclusive Listings
+              </button>
+              <button 
+                onClick={() => scrollTo('philosophy')} 
+                className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-gold transition-colors cursor-pointer"
+              >
+                Our Approach
+              </button>
+            </>
+          )}
+
+          {/* Cross-pollination Link */}
+          {/* <button 
+            onClick={switchService} 
+            className="flex items-center gap-2 text-sm font-semibold text-brand-gold hover:text-brand-goldlight transition-colors cursor-pointer"
           >
-            Amenities
-          </button>
-          <button 
-            onClick={() => scrollTo('pricing')} 
-            className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-brand-gold transition-colors cursor-pointer"
-          >
-            Rates
-          </button>
+            <ArrowRightLeft size={14} />
+            {isRealty ? 'Switch to Workhub' : 'Explore Realty'}
+          </button> */}
 
           <div className="flex items-center gap-4 pl-4 border-l border-slate-300 dark:border-slate-800">
             <button 
@@ -107,10 +165,10 @@ export default function Navbar() {
             </button>
 
             <button 
-              onClick={() => scrollTo('pricing')}
+              onClick={() => isRealty ? scrollTo('listings') : scrollTo('pricing')}
               className="px-5 py-2 rounded-full bg-brand-gold text-brand-navy font-semibold text-sm hover:bg-brand-goldlight transition-all shadow-sm cursor-pointer"
             >
-              Book a Desk
+              {isRealty ? 'View Properties' : 'Book a Desk'}
             </button>
           </div>
         </nav>
@@ -144,29 +202,40 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-white dark:bg-brand-navy border-b border-slate-200 dark:border-white/10 px-6 py-6 flex flex-col gap-4 overflow-hidden"
           >
+            {/* Explicit Home Button for Mobile */}
             <button 
-              onClick={() => scrollTo('philosophy')} 
+              onClick={() => { setIsOpen(false); navigate('/'); window.scrollTo(0, 0); }} 
               className="text-left py-2 font-medium text-slate-800 dark:text-slate-200"
             >
-              About
+              Home
             </button>
+
+            {!isRealty ? (
+              <>
+                <button onClick={() => scrollTo('philosophy')} className="text-left py-2 font-medium text-slate-800 dark:text-slate-200">About</button>
+                <button onClick={() => scrollTo('amenities')} className="text-left py-2 font-medium text-slate-800 dark:text-slate-200">Amenities</button>
+                <button onClick={() => scrollTo('pricing')} className="text-left py-2 font-medium text-slate-800 dark:text-slate-200">Rates</button>
+              </>
+            ) : (
+              <>
+                <button onClick={() => scrollTo('listings')} className="text-left py-2 font-medium text-slate-800 dark:text-slate-200">Exclusive Listings</button>
+                <button onClick={() => scrollTo('philosophy')} className="text-left py-2 font-medium text-slate-800 dark:text-slate-200">Our Approach</button>
+              </>
+            )}
+
             <button 
-              onClick={() => scrollTo('amenities')} 
-              className="text-left py-2 font-medium text-slate-800 dark:text-slate-200"
+              onClick={switchService} 
+              className="text-left py-2 font-bold text-brand-gold flex items-center gap-2"
             >
-              Amenities
+              <ArrowRightLeft size={16} />
+              {isRealty ? 'Switch to Workhub' : 'Explore Realty'}
             </button>
+
             <button 
-              onClick={() => scrollTo('pricing')} 
-              className="text-left py-2 font-medium text-slate-800 dark:text-slate-200"
-            >
-              Rates
-            </button>
-            <button 
-              onClick={() => scrollTo('pricing')}
+              onClick={() => isRealty ? scrollTo('listings') : scrollTo('pricing')}
               className="w-full py-3 mt-2 rounded-full bg-brand-gold text-brand-navy font-semibold text-center"
             >
-              Book a Desk
+              {isRealty ? 'View Properties' : 'Book a Desk'}
             </button>
           </motion.div>
         )}
