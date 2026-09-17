@@ -115,9 +115,9 @@ export default function Hero() {
               <Button onClick={() => document.getElementById("pricing")?.scrollIntoView({ behavior: "smooth" })}>
                 Book Your Desk
               </Button>
-              <Button variant="outline" className="dark:text-white dark:border-white/40 border-slate-900 text-slate-900 hover:bg-slate-900/5 dark:hover:bg-white/10" onClick={() => document.getElementById("philosophy")?.scrollIntoView({ behavior: "smooth" })}>
+              {/* <Button variant="outline" className="dark:text-white dark:border-white/40 border-slate-900 text-slate-900 hover:bg-slate-900/5 dark:hover:bg-white/10" onClick={() => document.getElementById("philosophy")?.scrollIntoView({ behavior: "smooth" })}>
                 Company Profile
-              </Button>
+              </Button> */}
             </motion.div>
 
           </motion.div>
