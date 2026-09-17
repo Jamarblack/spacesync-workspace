@@ -35,7 +35,7 @@ export default function Pricing() {
     const memberType = isSynchronized ? "Synchronized Member" : "New Community Member";
     const text = `Hello SpaceSync, I would like to book a ${planName} pass at ₦${price}. My status is: ${memberType}.`;
     const encodedText = encodeURIComponent(text);
-    window.open(`https://wa.me/2348167298962?text=${encodedText}`, '_blank');
+    window.open(`https://wa.me/2349075444531?text=${encodedText}`, '_blank');
   };
 
   return (
