@@ -1,28 +1,33 @@
 import { motion } from 'framer-motion';
+import coffee1 from '../../assets/spacesync coffee full.jpg';
+import coffee2 from '../../assets/spacesync-coffee-desk.jpg';
+import hero1 from '../../assets/spacesync-workspace3.jpg';
+import hero2 from '../../assets/spacesync-workspace1.jpg';
+
 
 export default function BentoGrid() {
   const cards = [
     {
-      img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop",
+      img: hero1,
       title: "The 25% Edge",
       desc: "Your environment can boost your productivity by up to 25%. Leverage a space engineered for execution.",
       colSpan: "md:col-span-2 md:row-span-2",
-      highlight: true
+      highlight: false
     },
     {
-      img: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=2070&auto=format&fit=crop",
+      img: coffee2,
       title: "Laser Focus",
       desc: "A quiet, well-designed workspace helps you focus better and get more done.",
       colSpan: "md:col-span-2"
     },
     {
-      img: "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?q=80&w=2070&auto=format&fit=crop",
+      img: hero2,
       title: "Networking",
       desc: "Coworking spaces naturally increase your chances of collaboration.",
       colSpan: "md:col-span-1"
     },
     {
-      img: "https://images.unsplash.com/photo-1527192491265-7e15c55b1ed2?q=80&w=2070&auto=format&fit=crop",
+      img: coffee1,
       title: "Satisfaction",
       desc: "Report significantly higher motivation and job satisfaction.",
       colSpan: "md:col-span-1"

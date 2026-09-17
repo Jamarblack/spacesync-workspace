@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { MapPin, BedDouble, Bath, SquareSquare, FileDown } from 'lucide-react';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
+import hero from '../assets/spacesync3.jpg';
 
 export default function Realty() {
   const properties = [
@@ -55,7 +56,7 @@ export default function Realty() {
         <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden mx-4 md:mx-8 mt-4 rounded-3xl">
           <div className="absolute inset-0 z-0">
             <img 
-              src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=2070&auto=format&fit=crop" 
+              src={hero} 
               alt="Luxury Real Estate" 
               className="w-full h-full object-cover opacity-80 dark:opacity-60 mix-blend-luminosity"
             />

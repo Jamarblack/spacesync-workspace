@@ -20,7 +20,7 @@ export default function Philosophy() {
           transition={{ delay: 0.1 }}
           className="text-lg md:text-xl text-slate-600 dark:text-slate-400 font-light leading-relaxed transition-colors duration-700"
         >
-          A smarter workspace leads to better productivity, smoother collaboration, and faster business growth. We help you stay connected, organized, and efficient because every great idea deserves the perfect space to grow.
+          Our synchronized workspace leads to better productivity, smoother collaboration, and faster business growth. We help you stay connected, organized, and efficient because every great idea deserves the perfect space to grow.
         </motion.p>
       </div>
     </section>

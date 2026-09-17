@@ -1,24 +1,27 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import Button from "../ui/Button"; // We will use your existing Button for now
+import Button from "../ui/Button"; 
+import coffee2 from '../../assets/spacesync-coffee-desk.jpg';
+import hero1 from '../../assets/spacesync-workspace3.jpg';
+import hero2 from '../../assets/spacesync-workspace1.jpg';
 
 const slides = [
   {
-    img: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop",
+    img: hero1,
     eyebrow: "SpaceSync Workhub",
     title: "Work Your Way,",
     titleAccent: "Everyday.",
     sub: "Flexible office spaces designed for focus, productivity, and growth.",
   },
   {
-    img: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=2070&auto=format&fit=crop",
+    img: coffee2,
     eyebrow: "Premium Environment",
     title: "Uninterrupted",
     titleAccent: "Focus",
     sub: "Ergonomic comfort, 24/7 power supply, and high-speed connectivity.",
   },
   {
-    img: "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?q=80&w=2070&auto=format&fit=crop",
+    img: hero2,
     eyebrow: "The Community",
     title: "Innovate, Create,",
     titleAccent: "Thrive.",

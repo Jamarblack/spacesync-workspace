@@ -1,6 +1,8 @@
 import { MapPin, Phone } from 'lucide-react';
 import logo from '../../assets/logo.png';
 import instagram from '../../assets/instagram.png'; 
+import whatsapp from '../../assets/whatsapp.png'; 
+
 
 
 
@@ -46,6 +48,16 @@ export default function Footer() {
             >
               <img src={instagram} alt="Instagram" className="w-8 h-8" />
               <span>@spacesync_workhub</span>
+            </a>
+
+             <a 
+              href="https://wa.me/2349075444531" 
+              target="_blank" 
+              rel="noreferrer"
+              className="flex items-center gap-3 text-slate-600 dark:text-slate-400 hover:text-brand-gold dark:hover:text-brand-gold transition-colors w-fit"
+            >
+              <img src={whatsapp} alt="WhatsApp" className="w-8 h-8" />
+              <span>SpaceSync</span>
             </a>
           </div>
         </div>

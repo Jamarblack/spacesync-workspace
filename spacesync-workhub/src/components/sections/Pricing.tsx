@@ -20,7 +20,7 @@ export default function Pricing() {
       syncPrice: "19,999",
       newPrice: "22,500",
       features: ["All Daily Features", "Professional Environment", "Complimentary Coffee"],
-      highlight: true
+      highlight: false
     },
     {
       name: "Monthly",
