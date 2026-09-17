@@ -44,7 +44,7 @@ export default function Realty() {
   const handleWhatsAppInspection = (propertyTitle: string, price: string) => {
     const text = `Hello SpaceSync Realty, I am interested in ${propertyTitle} listed for ₦${price}. I would like to book a property inspection.`;
     const encodedText = encodeURIComponent(text);
-    window.open(`https://wa.me/2348167298962?text=${encodedText}`, '_blank');
+    window.open(`https://wa.me/2349075444531?text=${encodedText}`, '_blank');
   };
 
   return (
